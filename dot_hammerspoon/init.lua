@@ -45,8 +45,10 @@ end)
 
 hs.hotkey.bind(hyper, "v", function()
   hs.eventtap.keyStroke({"cmd", "shift"}, "v")
-  hs.eventtap.keyStroke({}, "down")
-  hs.eventtap.keyStroke({}, "return")
+  hs.timer.doAfter(0.05, function()
+    hs.eventtap.keyStroke({}, "down")
+    hs.eventtap.keyStroke({}, "return")
+  end)
 end)
 
 hs.hotkey.bind(hyper, "c", function()
