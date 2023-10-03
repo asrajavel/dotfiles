@@ -143,3 +143,5 @@ export SPARK_HOME=/usr/local/Cellar/apache-spark/3.3.1/libexec
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home
 
 #EOF
+
+eval "$(atuin init zsh)"
