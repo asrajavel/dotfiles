@@ -1,12 +1,9 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+#!/usr/bin/env zsh
+
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-
-POWERLEVEL9K_MODE="nerdfont-complete"
 
 ZSH_THEME="robbyrussell"
 
@@ -66,25 +63,20 @@ container() {
 
 log() {
   local selectedPod=$(pod $1)
-#   local selectedContainer=$(container $1)
   local arguments="${@:2}"
 
   echo "pod: $selectedPod" >&2
-#   echo "container: $selectedContainer" >&2
   echo "arguments: $arguments" >&2
   echo "\n\n\n\n\n"
 
-#   kubectl logs $selectedPod -c $selectedContainer "${@:2}" | logColor
   kubectl logs $selectedPod "${@:2}" | logColor
 }
 
 logf() {
   local selectedPod=$(pod $1)
-#   local selectedContainer=$(container $1)
   local arguments="${@:2}"
 
   echo "pod: $selectedPod" >&2
-#   echo "container: $selectedContainer" >&2
   echo "arguments: $arguments" >&2
   echo "\n\n\n\n\n"
 
@@ -94,7 +86,6 @@ logf() {
 logs() {
   echo "all pod logs: " >&2
   kubectl logs -f -lfcp/vpc=Fk-Prod --max-log-requests 200 | logColor
-#   kubectl logs -f -lflow/env-name=fk-prod --max-log-requests 200
 }
 
 services() {
