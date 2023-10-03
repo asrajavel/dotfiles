@@ -13,10 +13,10 @@ local applicationHotkeys = {
   t = "iTerm",
   y = "IntelliJ IDEA CE",
   p = "Postman",
-  o = "Sequel Ace",
+  --o = "Sequel Ace",
   m = "Google Chrome",
   n = "Firefox",
-  u = "Slack",
+  --u = "Slack",
   b = "calibre"
 }
 

@@ -15,6 +15,7 @@ plugins=(
     zsh-syntax-highlighting
 )
 
+export ZSH="/Users/rajavel.as/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -49,7 +50,7 @@ pods() {
 }
 
 pod() {
-  local getPods=$(pods)
+  local getPods=$(pods | grep -E '1/1|2/2|3/3|4/4|5/5')
   local firstPod=$(echo "$getPods" | grep "$1" | head -1 | awk '{print $1}')
   echo "$firstPod"
 }
@@ -63,15 +64,29 @@ container() {
 
 log() {
   local selectedPod=$(pod $1)
-  local selectedContainer=$(container $1)
+#   local selectedContainer=$(container $1)
   local arguments="${@:2}"
 
   echo "pod: $selectedPod" >&2
-  echo "container: $selectedContainer" >&2
+#   echo "container: $selectedContainer" >&2
   echo "arguments: $arguments" >&2
   echo "\n\n\n\n\n"
 
-  kubectl logs $selectedPod -c $selectedContainer "${@:2}" | logColor
+#   kubectl logs $selectedPod -c $selectedContainer "${@:2}" | logColor
+  kubectl logs $selectedPod "${@:2}" | logColor
+}
+
+logf() {
+  local selectedPod=$(pod $1)
+#   local selectedContainer=$(container $1)
+  local arguments="${@:2}"
+
+  echo "pod: $selectedPod" >&2
+#   echo "container: $selectedContainer" >&2
+  echo "arguments: $arguments" >&2
+  echo "\n\n\n\n\n"
+
+  kubectl logs $selectedPod -f --since=1s "${@:2}" | logColor
 }
 
 logs() {
@@ -113,7 +128,7 @@ removeJunkLogs() {
   -e 'updating AB config' -e 'Please update to the latest stable AB Library Version'
 }
 
-export ZSH="/Users/rajavel.as/.oh-my-zsh"
+
 export PATH="${PATH}:${HOME}/.krew/bin"
 export JAVA_HOME=$(/usr/libexec/java_home)
 source <(kubectl completion zsh)
