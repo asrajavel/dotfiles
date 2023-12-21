@@ -1,0 +1,84 @@
+{:main [
+        {:des   "arrows mode"
+         :rules [[:f ["arrows-mode" 1] nil {:afterup ["arrows-mode" 0]
+                                            :alone   :f}]
+                 [:i :up_arrow ["arrows-mode" 1]]
+                 [:j :left_arrow ["arrows-mode" 1]]
+                 [:k :down_arrow ["arrows-mode" 1]]
+                 [:l :right_arrow ["arrows-mode" 1]]
+
+                 [:u :!Cleft_arrow ["arrows-mode" 1]]
+                 [:o :!Cright_arrow ["arrows-mode" 1]]
+
+                 [:h :!Oleft_arrow ["arrows-mode" 1]]
+                 [:semicolon :!Oright_arrow ["arrows-mode" 1]]
+                 ]}
+
+        {:des   "selection mode"
+         :rules [[:s ["selection-mode" 1] nil {:afterup ["selection-mode" 0]
+                                               :alone   :s}]
+                 [:i :!Sup_arrow ["selection-mode" 1]]
+                 [:j :!Sleft_arrow ["selection-mode" 1]]
+                 [:k :!Sdown_arrow ["selection-mode" 1]]
+                 [:l :!Sright_arrow ["selection-mode" 1]]
+
+                 [:u :!CSleft_arrow ["selection-mode" 1]]
+                 [:o :!CSright_arrow ["selection-mode" 1]]
+
+                 [:h :!OSleft_arrow ["selection-mode" 1]]
+                 [:semicolon :!OSright_arrow ["selection-mode" 1]]
+                 ]}
+
+        {:des   "deletion mode"
+         :rules [[:d ["deletion-mode" 1] nil {:afterup ["deletion-mode" 0]
+                                              :alone   :d}]
+                 [:j :delete_or_backspace ["deletion-mode" 1]]
+                 [:l :delete_forward ["deletion-mode" 1]]
+
+                 [:u :!Cdelete_or_backspace ["deletion-mode" 1]] ;work only in iterm
+                 [:o :!Cdelete_forward ["deletion-mode" 1]] ;does not work
+
+                 [:h :!Odelete_or_backspace ["deletion-mode" 1]]
+                 [:semicolon :!Odelete_forward ["deletion-mode" 1]]
+                 ]}
+
+        ]}
+
+;{:main [{:des   "arrows mode"
+;         :rules [[:arrows ["arrows-mode" 1] nil {:afterup ["arrows-mode" 0]
+;                                                 :alone   :arrows}]
+;                 [:d :!S9 ["arrows-mode" 1]]
+;                 [:f :!S0 ["arrows-mode" 1]]
+;                 [:a [:!Sgrave_accent_and_tilde :slash] ["arrows-mode" 1]]
+;                 [:s [:arrows :!S8] ["arrows-mode" 1]]]}]}
+
+;{:main [{:des "external keeb"
+;         :rules [[:C :O] [:O :C]]}]}
+;
+;{:main [{:des "simultaneous j l press to F19" :rules [[[:j :l] :f19]]
+;         }]}
+;;; rule [[:j :l] :f19]
+;;;       <from>  <to>
+;
+;;; so when from is a vector (or array), Goku will parse it as
+;;; simultaneous key press
+;
+;{:main [{:des   "tap w to set w-layer to 1"
+;         :rules [[:w ["w-layer" 1]]]}]}
+
+;; this means tap w to set variable "w layer" to 1
+;; rule [:w     ["w layer" 1]]
+;;      |____| |____________|
+;;       <from>     <to>
+
+;; we can also set multiple <to>, and use the defined variable in <conditions>
+;{:main [{:des   "tap w to insert w then set w-layer to 1"
+;         :rules [[:w [:w ["w-layer" 1]]]
+;                 [:1 [:1 :w] :w-layer]]}]}
+
+;; rule [:w    [:w ["w layer" 1]]]
+;;      |____| |_______________|
+;;      <from>       <to>w1w1w1
+
+; w1w1ww1w   1w 1w 1w 1w
+;.D ((...~/.*)).D......................(,d.d((((((.d.d.d.d(.d.d.d.d(((((((((.d((.dsi we as, s s,d ,d,d,d,d,d,...d.d(.d(((.d.d

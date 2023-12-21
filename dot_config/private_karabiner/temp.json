@@ -1,0 +1,143 @@
+{
+  "description": "New Custom Keyboard",
+  "manipulators": [
+    {
+      "conditions": [
+        {
+          "name": "layer",
+          "type": "variable_if",
+          "value": 0
+        }
+      ],
+      "from": {
+        "key_code": "a"
+      },
+      "to": [
+        {
+          "set_variable": {
+            "name": "layer",
+            "value": 1
+          }
+        }
+      ],
+      "to_after_key_up": [
+        {
+          "set_variable": {
+            "name": "layer",
+            "value": 0
+          }
+        }
+      ],
+      "to_if_alone": [],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "name": "layer",
+          "type": "variable_if",
+          "value": 1
+        }
+      ],
+      "from": {
+        "key_code": "f",
+        "modifiers": {
+          "optional": [
+            "shift",
+            "command",
+            "control",
+            "option",
+            "fn"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "name": "layer",
+          "type": "variable_if",
+          "value": 1
+        }
+      ],
+      "from": {
+        "key_code": "g",
+        "modifiers": {
+          "optional": [
+            "shift",
+            "command",
+            "control",
+            "option",
+            "fn"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "down_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "name": "layer",
+          "type": "variable_if",
+          "value": 1
+        }
+      ],
+      "from": {
+        "key_code": "h",
+        "modifiers": {
+          "optional": [
+            "shift",
+            "command",
+            "control",
+            "option",
+            "fn"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "right_arrow"
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "conditions": [
+        {
+          "name": "layer",
+          "type": "variable_if",
+          "value": 1
+        }
+      ],
+      "from": {
+        "key_code": "t",
+        "modifiers": {
+          "optional": [
+            "shift",
+            "command",
+            "control",
+            "option",
+            "fn"
+          ]
+        }
+      },
+      "to": [
+        {
+          "key_code": "up_arrow"
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}
