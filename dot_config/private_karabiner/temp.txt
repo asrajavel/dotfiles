@@ -1,1 +1,0 @@
-asbackup -h 10.64.143.51 -p 3000 --namespace raw --set aggregatedThresholdEntity --directory ~/asBackup

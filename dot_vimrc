@@ -1,1 +1,4 @@
 syntax on
+set mouse=a
+nnoremap <F3> :w<CR>
+inoremap <F3> <C-O>:w<CR>
