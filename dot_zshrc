@@ -10,7 +10,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-mouse-mode
 )
 
 # eval "$(atuin init zsh)"
@@ -121,7 +120,7 @@ columnColor() {
 
 removeJunkLogs() {
   grep -v \
-  -e '/elb-healthcheck' -e '/isReady' -e '/rotation' \
+  -e '/elb-healthcheck' -e '/isReady' -e '/rotation' -e '/healthcheck'\
   -e 'RequestFilter' \
   -e 'updating AB config' -e 'Please update to the latest stable AB Library Version'
 }
@@ -158,4 +157,4 @@ export SPARK_HOME=/usr/local/Cellar/apache-spark/3.3.1/libexec
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home
 
 #EOF
-eval "$(atuin init zsh)"
+#eval "$(atuin init zsh)"

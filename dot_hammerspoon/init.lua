@@ -5,12 +5,12 @@ hs.hotkey.bind(hyper, "0", function()
 end)
 
 hs.hotkey.bind(hyper, ";", function()
-    moveMouseToMiddleOfActiveApplication()
+    --moveMouseToMiddleOfActiveApplication()
 end)
 
 function moveMouseToMiddleOfActiveApplication()
     local app = hs.application.frontmostApplication()
-    hs.notify.new({title="Notification", informativeText="Active Application: " .. app:title()}):send()
+    --hs.notify.new({title="Notification", informativeText="Active Application: " .. app:title()}):send()
     moveMouseToMiddle(app)
 end
 
@@ -47,7 +47,7 @@ for key, app in pairs(applicationHotkeys) do
         end
 
         local appObj = hs.application.get(app)
-        moveMouseToMiddle(appObj)
+        --moveMouseToMiddle(appObj)
     end)
 end
 
@@ -96,7 +96,6 @@ end
 -- Add more hotkeys for additional monitors as needed
 
 -- Notify when the script is loaded
-hs.notify.new({title="Hammerspoon", informativeText="Mouse to Middle script loaded"}):send()
 
 --function moveFocusedAppToScreen(screenId)
 --    -- Get the currently focused window
@@ -226,3 +225,25 @@ hs.hotkey.bind(hyper, "5", function() moveFocusedAppToScreen("right") end)
 --  hs.eventtap.keyStroke({"option", "shift"}, "right")
 --  hs.eventtap.keyStroke({"cmd"}, "v")
 --end)
+
+
+-- Function to execute a command and capture its output
+local function executeCommand(command)
+    local handle = io.popen(command)
+    local result = handle:read("*a")
+    handle:close()
+    return result
+end
+
+-- Function to run the Python script and display its output in a notification
+local function runPythonScript()
+    local pythonCommand = "/Users/rajavel.as/shieldProjects/k8Selector/venv/bin/python /Users/rajavel.as/.hammerspoon/totp.py"
+    local output = executeCommand(pythonCommand)
+    hs.notify.new({title="Python Output", informativeText=output}):send()
+    hs.eventtap.keyStrokes(output)
+end
+
+-- Bind the function to a hotkey
+hs.hotkey.bind(hyper, "z", function()
+    runPythonScript()
+end)
