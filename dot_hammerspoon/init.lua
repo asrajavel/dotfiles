@@ -1,5 +1,4 @@
 require("totp")
-require("keep_mac_unlocked")
 local hyper = {"cmd", "alt", "ctrl", "shift"}
 
 hs.allowAppleScript(true)
