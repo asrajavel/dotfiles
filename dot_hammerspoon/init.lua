@@ -159,6 +159,27 @@ end
 hs.hotkey.bind(hyper, "4", function() moveFocusedAppToScreen("left") end)
 hs.hotkey.bind(hyper, "5", function() moveFocusedAppToScreen("right") end)
 
+-- Function to simulate typing clipboard text
+local function typeClipboardText()
+    local clipboardText = hs.pasteboard.readString()
+    if clipboardText then
+        for _, char in ipairs(clipboardText) do
+            hs.eventtap.keyStroke(char)
+            hs.sleep(0.01) -- Adjust delay as needed
+        end
+    end
+end
+
+hs.hotkey.bind(hyper, "9", function()
+    print("Error: hiii ")
+    local clipboardText = hs.pasteboard.readString()
+    if clipboardText and type(clipboardText) == "string" then
+        for _, char in ipairs({clipboardText:byte(1, -1)}) do
+            hs.eventtap.keyStroke({}, string.char(char))
+        end
+    end
+end)
+
 --
 --left_monitor = hs.screen.allScreens()[1]
 --right_monitor = hs.screen.allScreens()[2]
